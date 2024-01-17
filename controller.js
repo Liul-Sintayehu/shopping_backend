@@ -22,8 +22,19 @@ const getOrders = (req,res)=>{
       })
 }
 
+const deleteOrder = (req,res)=>{
+  OrderModel.deleteOne({_id: req.body.id})
+  .then((resp)=>{
+    res.json(resp)
+  })
+  .catch((err)=>{
+    res.json(err)
+  })
+}
+
 
 module.exports = {
     addOrder,
-    getOrders
+    getOrders,
+    deleteOrder
 }
